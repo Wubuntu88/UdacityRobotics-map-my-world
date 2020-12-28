@@ -1,0 +1,21 @@
+ros setup
+sudo apt-get update && sudo apt-get upgrade -y 
+
+source /opt/ros/kinetic/setup.bash
+
+mkdir -p /home/workspace/catkin_ws/src
+cd /home/workspace/catkin_ws/src
+catkin_init_workspace
+cd /home/workspace/catkin_ws
+catkin_make
+source devel/setup.bash
+
+$ cd /home/workspace/catkin_ws/src/
+$ git clone -b first_interaction https://github.com/udacity/RoboND-simple_arm/ simple_arm
+git clone -b origin https://github.com/Wubuntu88/UdacityRobotics-myrobot/ go-chase-it
+
+$ cd /home/workspace/catkin_ws/
+$ catkin_make
+
+may solve an error: "Could not find a package configuration file provided by controller_manager"
+$ sudo apt-get install ros-kinetic-controller-manage

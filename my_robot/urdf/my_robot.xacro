@@ -2,6 +2,7 @@
 
 <robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find my_robot)/urdf/my_robot.gazebo" />
+  <xacro:include filename="$(find my_robot)/urdf/materials.xacro" />
   <link name="robot_footprint"></link>
 
   <joint name="robot_footprint_joint" type="fixed">
@@ -35,6 +36,7 @@
       <geometry>
         <box size=".4 .2 .1"/>
       </geometry>
+      <material name="orange"/>
     </visual>
 
 
@@ -50,6 +52,7 @@
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
+      <material name="silver"/>
     </visual>
 
     <collision name='front_caster_collision'>
