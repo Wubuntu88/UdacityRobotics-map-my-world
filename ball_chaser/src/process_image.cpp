@@ -60,7 +60,7 @@ void process_image_callback(const sensor_msgs::Image img)
     int left_index = 0;
     int front_index = 1;
     int right_index = 2;
-    vector<int> vec{left_side_counter, front_counter, right_side_counter};
+    std::vector<int> vec{left_side_counter, front_counter, right_side_counter};
     int maxElementIndex = std::max_element(vec.begin(), vec.end()) - vec.begin();
     if (maxElementIndex == 0) {
       drive_robot(0.0, -0.7);

@@ -35,7 +35,7 @@ int main(int argc, char** argv)
 
     // Define a drive /ball_chaser/command_robot service with a handle_drive_request callback function
     ros::ServiceServer service = n.advertiseService("/ball_chaser/command_robot", handle_drive_request);
-    ROS_INFO("Ready to send DriveToTarget commands")
+    ROS_INFO("Ready to send DriveToTarget commands");
 
     ros::spin();
 
