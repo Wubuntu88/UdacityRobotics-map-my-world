@@ -12,8 +12,8 @@ void drive_robot(float lin_x, float ang_z)
     // TODO: Request a service and pass the velocities to it to drive the robot
     ROS_INFO_STREAM("sending DriveToTarget message...");
     ball_chaser::DriveToTarget driveToTargetService;
-    driveToTargetService.linear_x = lin_x;
-    driveToTargetService.angular_z = ang_z;
+    driveToTargetService.request.linear_x = lin_x;
+    driveToTargetService.request.angular_z = ang_z;
     if (!client.call(driveToTargetService)) {
       ROS_ERROR("Failed to call service /ball_chaser/command_robot");
     }
