@@ -42,13 +42,13 @@ void process_image_callback(const sensor_msgs::Image img)
             pixel_value_2 == white_pixel && 
             pixel_value_3 == white_pixel) {
           if (col <= left_cutoff) {
-            ++left_cutoff;
+            ++left_side_counter;
           }
           if (col > left_cutoff && col < right_cutoff) {
             ++front_counter;
           }
           if (col > right_cutoff) {
-            ++right_cutoff;
+            ++right_side_counter;
           }
         }
       }
