@@ -16,10 +16,12 @@ bool handle_drive_request(ball_chaser::DriveToTarget::Request& request,
   // Create a motor_command object of type geometry_msgs::Twist
   geometry_msgs::Twist motor_command;
   // Set wheel velocities, forward [0.5, 0.0]
-  motor_command.linear.x = 0.5;
-  motor_command.angular.z = 0.0;
+  motor_command.linear.x = request.linear_x;
+  motor_command.angular.z = request.angular_z;
   // Publish angles to drive the robot
   motor_command_publisher.publish(motor_command);
+  
+  response.msg_feedback = "Motor command received - linear_x: " + std::to_string(motor_command.linear.x) + ", angular_z: " + std::to_string(motor_command.angular.z);
 }
 
 int main(int argc, char** argv)

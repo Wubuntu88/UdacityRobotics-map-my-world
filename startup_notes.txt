@@ -42,7 +42,7 @@ rosrun rviz rviz
 # spin up drive_bot node
 cd /home/workspace/catkin_ws/
 source devel/setup.bash
-rosrun ball_chaser drive_bot
+roslaunch ball_chaser ball_chaser.launch
 
 # to drive it, open a new terminal.
 cd /home/workspace/catkin_ws/
