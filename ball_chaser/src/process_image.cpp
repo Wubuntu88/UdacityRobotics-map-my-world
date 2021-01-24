@@ -56,6 +56,7 @@ void process_image_callback(const sensor_msgs::Image img)
     
     if (left_side_counter == 0 && front_counter == 0 && right_side_counter == 0) {
       drive_robot(0.0, 0.0);
+      ROS_INFO("STOP; there are no white pixels.");
     }
     int left_index = 0;
     int front_index = 1;
@@ -63,13 +64,17 @@ void process_image_callback(const sensor_msgs::Image img)
     std::vector<int> vec{left_side_counter, front_counter, right_side_counter};
     int maxElementIndex = std::max_element(vec.begin(), vec.end()) - vec.begin();
     if (maxElementIndex == 0) {
-      drive_robot(0.25, 0.5);
+      drive_robot(0.2, 0.2);  // Turn Left
+      ROS_INFO("LEFT");
     }else if (maxElementIndex == 1) {
-      drive_robot(0.25, 0.0);
+      drive_robot(0.2, 0.0);  // Go Straight
+      ROS_INFO("CENTER");
     }else if (maxElementIndex == 2) {
-      drive_robot(0.25, -0.5);
+      drive_robot(0.2, -0.2);  // Turn Right
+      ROS_INFO("RIGHT");
     }else { // if all pixel counters are equal
-      drive_robot(0, 0);
+      drive_robot(0, 0);  // stop
+      ROS_INFO("STOP");
     }
 }
 
