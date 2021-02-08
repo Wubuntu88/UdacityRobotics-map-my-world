@@ -68,13 +68,13 @@ void process_image_callback(const sensor_msgs::Image img)
     std::vector<int> vec{left_side_counter, front_counter, right_side_counter};
     int maxElementIndex = std::max_element(vec.begin(), vec.end()) - vec.begin();
     if (maxElementIndex == 0) {
-      drive_robot(0.2, 0.2);  // Turn Left
+      drive_robot(0.2, 0.4);  // Turn Left
       ROS_INFO("LEFT");
     }else if (maxElementIndex == 1) {
-      drive_robot(0.2, 0.0);  // Go Straight
+      drive_robot(0.4, 0.0);  // Go Straight
       ROS_INFO("CENTER");
     }else if (maxElementIndex == 2) {
-      drive_robot(0.2, -0.2);  // Turn Right
+      drive_robot(0.2, -0.4);  // Turn Right
       ROS_INFO("RIGHT");
     }else { // if all pixel counters are equal
       drive_robot(0, 0);  // stop
