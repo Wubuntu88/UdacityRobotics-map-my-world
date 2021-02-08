@@ -4,10 +4,10 @@ Udacity Robotics Nanodegree
 Project 2: Go Chase It
 ------------------
 ![Robot and ball picture](overhead_shot.png)
-###Overview
+### Overview
 This project will drive a robot to chase a white ball.
 
-###Project Setup
+### Project Setup
 
 Navigate to the home directory in a terminal.  
 Issue the following commands to create a catkin workspace:
@@ -43,7 +43,7 @@ source devel/setup.bash
 roslaunch ball_chaser ball_chaser.launch
 ```
 
-###Project Structure
+### Project Structure
 Here is the project structure as listed in the project requirements:
 ```
 .Project2                          # Go Chase It Project
