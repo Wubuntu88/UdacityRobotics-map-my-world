@@ -31,7 +31,7 @@ cd ..
 catkin_make
 ```
 
-You must start two programs to run the system.
+You must start two programs to run the system.  This is done in two differenct terminals.
 1) The Gazebo World
 ```
 source devel/setup.bash
