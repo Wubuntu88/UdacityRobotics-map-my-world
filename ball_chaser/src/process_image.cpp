@@ -55,9 +55,12 @@ void process_image_callback(const sensor_msgs::Image img)
       }
     }
     
+    ROS_INFO("left: %d, center: %d, right: %d", left_side_counter, front_counter, right_side_counter);
+    
     if (left_side_counter == 0 && front_counter == 0 && right_side_counter == 0) {
       drive_robot(0.0, 0.0);
       ROS_INFO("STOP; there are no white pixels.");
+      return;
     }
     int left_index = 0;
     int front_index = 1;
