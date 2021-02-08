@@ -46,7 +46,7 @@ roslaunch ball_chaser ball_chaser.launch
 ### Project Structure
 Here is the project structure as listed in the project requirements:
 ```
-.Project2                          # Go Chase It Project
+.UdacityRobotics-myrobot                         # Go Chase It Project
 ├── my_robot                       # my_robot package                   
 │   ├── launch                     # launch folder for launch files   
 │   │   ├── robot_description.launch
