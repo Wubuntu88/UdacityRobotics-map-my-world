@@ -25,7 +25,7 @@ cp -R UdacityRobotics-myrobot/ball_chaser ball_chaser
 cp -R UdacityRobotics-myrobot/my_robot my_robot
 ```
 
-You must navigate to the ~/catkin_ws directory.  Do the following commands:
+Build the catkin workspace:
 ```
 cd ..
 catkin_make
