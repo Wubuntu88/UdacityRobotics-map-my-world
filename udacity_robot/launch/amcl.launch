@@ -1,7 +1,7 @@
 <launch>
   <!-- Map Server TODO ADD MAP NAME !!!! -->
   
-  <arg name="map_file" default="$(find udacity_robot)/maps/<YOUR MAP NAME>.yaml"/>
+  <arg name="map_file" default="$(find udacity_robot)/maps/wooden_house_map.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
   
   <!-- AMCL node -->
