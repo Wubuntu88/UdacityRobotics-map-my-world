@@ -6,9 +6,9 @@
   
   <!-- AMCL node -->
   <node name="amcl" pkg="amcl" type="amcl" output="screen">
+    <!-- amcl listening to "/udacity_robot/laser/scan" instead of "/scan" for laser data -->
     <remap from="scan" to="/udacity_robot/laser/scan"/>
     
-    <remap from="scan" to="udacity_robot/laser/scan"/>
     <param name="odom_frame_id" value="odom"/>
     <param name="odom_model_type" value="diff-corrected"/>
     <param name="base_frame_id" value="robot_footprint"/>
@@ -21,6 +21,7 @@
   
   <!-- Move Base -->
   <node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
+    <!-- amcl listening to "/udacity_robot/laser/scan" instead of "/scan" for laser data -->
     <remap from="scan" to="/udacity_robot/laser/scan"/>
     
     <param name="base_global_planner" value="navfn/NavfnROS" />
