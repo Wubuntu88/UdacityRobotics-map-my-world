@@ -46,19 +46,9 @@ roscore
 # run rviz
 rosrun rviz rviz
 
-# spin up drive_bot node
-cd /home/workspace/catkin_ws/
-source devel/setup.bash
-roslaunch ball_chaser ball_chaser.launch
+# run gazebo
+roslaunch my_robot world.launch
+# run amcl
+roslaunch udacity_robot amcl.launch
 
-# to drive it, open a new terminal.
-cd /home/workspace/catkin_ws/
-source devel/setup.bash
-rostopic pub /cmd_vel geometry_msgs/Twist  "linear:
-  x: 0.1
-  y: 0.0
-  z: 0.0
-angular:
-  x: 0.0
-  y: 0.0
-  z: 0.1" 
+
