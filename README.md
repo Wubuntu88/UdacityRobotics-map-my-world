@@ -1,8 +1,9 @@
 Udacity Robotics Nanodegree
 ------------------
 
-Project 2: Go Chase It
+Project 3: Where-Am-I
 ------------------
+TODO ADD DIFFERENT PICTURE
 ![Robot and ball picture](overhead_shot.png)
 ### Overview
 This project will drive a robot to chase a white ball.
@@ -20,9 +21,9 @@ catkin_init_workspace
 Next, download the github repository:
 
 ```
-git clone https://github.com/Wubuntu88/UdacityRobotics-myrobot.git
-cp -R UdacityRobotics-myrobot/ball_chaser ball_chaser
-cp -R UdacityRobotics-myrobot/my_robot my_robot
+git clone https://github.com/Wubuntu88/UdacityRobotics-Where-am-I.git
+cp -R UdacityRobotics-Where-am-I/udacity_robot udacity_robot
+cp -R UdacityRobotics-Where-am-I/my_robot my_robot
 ```
 
 Build the catkin workspace:
@@ -32,15 +33,15 @@ catkin_make
 ```
 
 You must start two programs to run the system.  This is done in two different terminals.
-1) The Gazebo World
+1) The Gazebo World (RViz will also start)
 ```
 source devel/setup.bash
 roslaunch my_robot world.launch
 ```
-2) The ball_chaser node
+2) The AMCL node
 ```
 source devel/setup.bash
-roslaunch ball_chaser ball_chaser.launch
+roslaunch udacity_robot amcl.launch
 ```
 
 ### Project Structure
