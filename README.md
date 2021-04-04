@@ -10,6 +10,17 @@ This project will drive a robot to chase a white ball.
 
 ### Project Setup
 
+#### Setup scripts for the container:
+```
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install ros-kinetic-navigation
+sudo apt-get install ros-kinetic-map-server
+sudo apt-get install ros-kinetic-move-base
+sudo apt-get install ros-kinetic-amcl
+sudo apt-get install libignition-math2-dev protobuf-compiler
+source /opt/ros/kinetic/setup.bash
+```
+
 Navigate to the home directory in a terminal.  
 Issue the following commands to create a catkin workspace:
 ```
