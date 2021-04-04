@@ -21,9 +21,10 @@ catkin_init_workspace
 Next, download the github repository:
 
 ```
+cd catkin_ws/
 git clone https://github.com/Wubuntu88/UdacityRobotics-Where-am-I.git
-cp -R UdacityRobotics-Where-am-I/udacity_robot udacity_robot
-cp -R UdacityRobotics-Where-am-I/my_robot my_robot
+cp -R -f UdacityRobotics-Where-am-I/udacity_robot src/
+cp -R -f UdacityRobotics-Where-am-I/my_robot src/
 ```
 
 Build the catkin workspace:
@@ -35,11 +36,13 @@ catkin_make
 You must start two programs to run the system.  This is done in two different terminals.
 1) The Gazebo World (RViz will also start)
 ```
+cd catkin_ws/
 source devel/setup.bash
 roslaunch my_robot world.launch
 ```
 2) The AMCL node
 ```
+cd catkin_ws/
 source devel/setup.bash
 roslaunch udacity_robot amcl.launch
 ```
