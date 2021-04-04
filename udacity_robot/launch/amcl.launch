@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <launch>
-  <!-- Map Server TODO ADD MAP NAME !!!! -->
   
   <arg name="map_file" default="$(find udacity_robot)/maps/wooden_house_map.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
@@ -15,8 +15,9 @@
     <param name="global_frame_id" value="map"/>
     
     <!-- defining the initial x and y position of the robot to give to the AMCL. -->
-    <param name="initial_pose_x" value="2.209808"/>
-    <param name="initial_pose_y" value="-1.257210"/>
+    <param name="initial_pose_x" value="0.0"/>
+    <param name="initial_pose_y" value="0.0"/>
+    <param name="initial_pose_a" value="-1.5707"/>
   </node>
   
   <!-- Move Base -->
