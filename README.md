@@ -3,12 +3,18 @@ Udacity Robotics Nanodegree
 
 Project 3: Where-Am-I
 ------------------
-TODO ADD DIFFERENT PICTURE
-![Robot and ball picture](overhead_shot.png)
-### Overview
-This project will drive a robot to chase a white ball.
+Here is the robot in the initial position without localized particles:
+![initial post picture](initial_pose.png)
+Here is the robot localized:
+![initial post picture](localized_2.png)
+Here is a link to the video:
 
-### Project Setup
+[localization video](https://github.com/Wubuntu88/UdacityRobotics-Where-am-I/blob/master/robot_localization.mov)
+### Overview
+This project will use AMCL to localize a robot, using the robot and world defined in the previous project.
+It can localize using the teleop node and typing via the keyboard to move it.
+
+## Project Setup
 
 #### Setup scripts for the container:
 ```
@@ -44,6 +50,16 @@ cd ..
 catkin_make
 ```
 
+Setup the teleop node:
+```
+cd /home/workspace/catkin_ws/src
+git clone https://github.com/ros-teleop/teleop_twist_keyboard
+cd ..
+catkin_make
+source devel/setup.bash
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+```
+
 You must start two programs to run the system.  This is done in two different terminals.
 1) The Gazebo World (RViz will also start)
 ```
@@ -59,31 +75,71 @@ roslaunch udacity_robot amcl.launch
 ```
 
 ### Project Structure
-Here is the project structure as listed in the project requirements:
+Here is the project structure in the src folder:
 ```
-.UdacityRobotics-myrobot                         # Go Chase It Project
-├── my_robot                       # my_robot package                   
-│   ├── launch                     # launch folder for launch files   
-│   │   ├── robot_description.launch
-│   │   ├── world.launch
-│   ├── meshes                     # meshes folder for sensors
-│   │   ├── hokuyo.dae
-│   ├── urdf                       # urdf folder for xarco files
-│   │   ├── my_robot.gazebo
-│   │   ├── my_robot.xacro
-│   ├── world                      # world folder for world files
-│   │   ├── my_world
-│   ├── CMakeLists.txt             # compiler instructions
-│   ├── package.xml                # package info
-├── ball_chaser                    # ball_chaser package                   
-│   ├── launch                     # launch folder for launch files   
-│   │   ├── ball_chaser.launch
-│   ├── src                        # source folder for C++ scripts
-│   │   ├── drive_bot.cpp
-│   │   ├── process_images.cpp
-│   ├── srv                        # service folder for ROS services
-│   │   ├── DriveToTarget.srv
-│   ├── CMakeLists.txt             # compiler instructions
-│   ├── package.xml                # package info                  
-└──                      
+root@8eb4bf9c25fc:/home/workspace/catkin_ws/src# tree
+.
+|-- CMakeLists.txt -> /opt/ros/kinetic/share/catkin/cmake/toplevel.cmake
+|-- my_robot
+|   |-- CMakeLists.txt
+|   |-- launch
+|   |   |-- robot_description.launch
+|   |   `-- world.launch
+|   |-- mesh_files
+|   |   `-- hokuyo.dae
+|   |-- package.xml
+|   |-- urdf
+|   |   |-- materials.xacro
+|   |   |-- my_robot.gazebo
+|   |   `-- my_robot.xacro
+|   `-- worlds
+|       |-- myworld
+|       |-- myworld_without_ball
+|       |-- myworld_without_ball.world
+|       |-- wooden_house.world
+|       `-- wooden_house_with_ball.world
+|-- pgm_map_creator
+|   |-- CMakeLists.txt
+|   |-- LICENSE
+|   |-- README.md
+|   |-- launch
+|   |   `-- request_publisher.launch
+|   |-- maps
+|   |   |-- map
+|   |   `-- map.pgm
+|   |-- msgs
+|   |   |-- CMakeLists.txt
+|   |   `-- collision_map_request.proto
+|   |-- package.xml
+|   |-- src
+|   |   |-- collision_map_creator.cc
+|   |   `-- request_publisher.cc
+|   `-- world
+|       |-- myworld_without_ball
+|       |-- udacity_mtv
+|       `-- wooden_house.world
+|-- teleop_twist_keyboard
+|   |-- CHANGELOG.rst
+|   |-- CMakeLists.txt
+|   |-- README.md
+|   |-- package.xml
+|   `-- teleop_twist_keyboard.py
+`-- udacity_robot
+    |-- CMakeLists.txt
+    |-- config
+    |   |-- base_local_planner_params.yaml
+    |   |-- costmap_common_params.yaml
+    |   |-- global_costmap_params.yaml
+    |   |-- local_costmap_params.yaml
+    |   `-- sensor_viewing_rviz_config.rviz
+    |-- launch
+    |   |-- amcl.launch
+    |   `-- wooden_house_world.launch
+    |-- maps
+    |   |-- original_map.pbm
+    |   |-- wooden_house_map.pbm
+    |   `-- wooden_house_map.yaml
+    `-- package.xml
+
+17 directories, 44 files
 ```
