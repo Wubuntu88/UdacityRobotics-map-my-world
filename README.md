@@ -39,9 +39,11 @@ Next, download the github repository:
 
 ```
 cd catkin_ws/
-git clone https://github.com/Wubuntu88/UdacityRobotics-Where-am-I.git
-cp -R -f UdacityRobotics-Where-am-I/udacity_robot src/
-cp -R -f UdacityRobotics-Where-am-I/my_robot src/
+git clone https://github.com/Wubuntu88/UdacityRobotics-map-my-world.git
+rm -rf UdacityRobotics-map-my-world/udacity_robot/
+rm -rf UdacityRobotics-map-my-world/my_robot
+
+cp -R -f UdacityRobotics-map-my-world/my_robot src/
 ```
 
 Build the catkin workspace:
@@ -65,14 +67,18 @@ You must start two programs to run the system.  This is done in two different te
 ```
 cd catkin_ws/
 source devel/setup.bash
-roslaunch my_robot world.launch
+roslaunch my_robot wooden_house_world.launch
 ```
 2) The AMCL node
 ```
 cd catkin_ws/
 source devel/setup.bash
-roslaunch udacity_robot amcl.launch
+roslaunch my_robot mapping.launch
+roslaunch my_robot localization.launch
 ```
+
+### Database Analysis
+rtabmap-databaseViewer ~/.ros/rtabmap.db
 
 ### Project Structure
 Here is the project structure in the src folder:
