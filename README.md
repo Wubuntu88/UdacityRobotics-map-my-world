@@ -40,8 +40,9 @@ Next, download the github repository:
 ```
 cd catkin_ws/
 git clone https://github.com/Wubuntu88/UdacityRobotics-map-my-world.git
-rm -rf UdacityRobotics-map-my-world/udacity_robot/
-rm -rf UdacityRobotics-map-my-world/my_robot
+
+rm -rf src/udacity_robot/
+rm -rf src/my_robot
 
 cp -R -f UdacityRobotics-map-my-world/my_robot src/
 ```
@@ -69,7 +70,8 @@ cd catkin_ws/
 source devel/setup.bash
 roslaunch my_robot wooden_house_world.launch
 ```
-2) The AMCL node
+
+2) The mapping node
 ```
 cd catkin_ws/
 source devel/setup.bash
