@@ -1,18 +1,20 @@
 Udacity Robotics Nanodegree
 ------------------
 
-Project 3: Where-Am-I
+Project 4: Map My World
 ------------------
-Here is the robot in the initial position without localized particles:
-![initial post picture](initial_pose.png)
-Here is the robot localized:
-![initial post picture](localized_2.png)
-Here is a link to the video:
 
-[localization video](https://github.com/Wubuntu88/UdacityRobotics-Where-am-I/blob/master/robot_localization.mov)
 ### Overview
-This project will use AMCL to localize a robot, using the robot and world defined in the previous project.
-It can localize using the teleop node and typing via the keyboard to move it.
+This project uses the RTAB-MAP ros package to map out the gazebo world of the previous projects.
+The teleop ros package is used to move the robot in the gazebo project, 
+and the RTAB-MAP package will map out the area as the robot moves through it.
+
+In the project run, the robot is moved around the environment via teleop, 
+and RTAB-MAP recognizes features of different landmards (postbox, mailbox, quad rotor, etc).
+When there is a feature that is recognized as being seen again, there is a 'loop closure'.
+
+Below are instructions to start the project in the Udacity workspace.
+There are also screenshots of the project as the run of the robot progressed.
 
 ## Project Setup
 
@@ -40,10 +42,7 @@ Next, download the github repository:
 ```
 cd catkin_ws/
 git clone https://github.com/Wubuntu88/UdacityRobotics-map-my-world.git
-
-rm -rf src/udacity_robot/
 rm -rf src/my_robot
-
 cp -R -f UdacityRobotics-map-my-world/my_robot src/
 ```
 
@@ -61,6 +60,8 @@ cd ..
 catkin_make
 source devel/setup.bash
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+or
+roslaunch my_robot teleop.launch
 ```
 
 You must start two programs to run the system.  This is done in two different terminals.
@@ -81,73 +82,96 @@ roslaunch my_robot localization.launch
 
 ### Database Analysis
 rtabmap-databaseViewer ~/.ros/rtabmap.db
+Here is the rtabmap database file: https://drive.google.com/file/d/12Ni1OEAid9l5qRj1225bOv0_ohx1f6sS/view?usp=sharing
+
+# Images of the project:
+Here is the robot in the initial position:
+![initial position picture](images/1_initial_position.png)
+Here is the robot having explored the map:
+![loop closure rejection picture](images/2_map_explored.png)
+Here is the robot with a local match:
+![local match picture](images/3_local_match.png)
+Here is the robot with a loop closure rejection:
+![loop closure rejection picture](images/4_loop_rejection.png)
+Here is the robot with the post box being recognized again in a second position:
+![loop closure rejection picture](images/5_post_box_match.png)
+Here is the robot with the quad rotor being recognized again in a second position:
+![loop closure rejection picture](images/6_quadrotor_match.png)
 
 ### Project Structure
-Here is the project structure in the src folder:
-```
-root@8eb4bf9c25fc:/home/workspace/catkin_ws/src# tree
-.
-|-- CMakeLists.txt -> /opt/ros/kinetic/share/catkin/cmake/toplevel.cmake
-|-- my_robot
-|   |-- CMakeLists.txt
-|   |-- launch
-|   |   |-- robot_description.launch
-|   |   `-- world.launch
-|   |-- mesh_files
-|   |   `-- hokuyo.dae
-|   |-- package.xml
-|   |-- urdf
-|   |   |-- materials.xacro
-|   |   |-- my_robot.gazebo
-|   |   `-- my_robot.xacro
-|   `-- worlds
-|       |-- myworld
-|       |-- myworld_without_ball
-|       |-- myworld_without_ball.world
-|       |-- wooden_house.world
-|       `-- wooden_house_with_ball.world
-|-- pgm_map_creator
-|   |-- CMakeLists.txt
-|   |-- LICENSE
-|   |-- README.md
-|   |-- launch
-|   |   `-- request_publisher.launch
-|   |-- maps
-|   |   |-- map
-|   |   `-- map.pgm
-|   |-- msgs
-|   |   |-- CMakeLists.txt
-|   |   `-- collision_map_request.proto
-|   |-- package.xml
-|   |-- src
-|   |   |-- collision_map_creator.cc
-|   |   `-- request_publisher.cc
-|   `-- world
-|       |-- myworld_without_ball
-|       |-- udacity_mtv
-|       `-- wooden_house.world
-|-- teleop_twist_keyboard
-|   |-- CHANGELOG.rst
-|   |-- CMakeLists.txt
-|   |-- README.md
-|   |-- package.xml
-|   `-- teleop_twist_keyboard.py
-`-- udacity_robot
-    |-- CMakeLists.txt
-    |-- config
-    |   |-- base_local_planner_params.yaml
-    |   |-- costmap_common_params.yaml
-    |   |-- global_costmap_params.yaml
-    |   |-- local_costmap_params.yaml
-    |   `-- sensor_viewing_rviz_config.rviz
-    |-- launch
-    |   |-- amcl.launch
-    |   `-- wooden_house_world.launch
-    |-- maps
-    |   |-- original_map.pbm
-    |   |-- wooden_house_map.pbm
-    |   `-- wooden_house_map.yaml
-    `-- package.xml
+The project is in the my_robot folder and the database is in this link: https://drive.google.com/file/d/12Ni1OEAid9l5qRj1225bOv0_ohx1f6sS/view?usp=sharing
 
-17 directories, 44 files
+Here is the project structure from the top level folder:
+```
+(base) will-MBP ~/Desktop/UdacityRobotics/UdacityRobotics-map-my-world$:tree
+.
+├── README.md
+├── ball_chaser
+│   ├── CMakeLists.txt
+│   ├── launch
+│   │   └── ball_chaser.launch
+│   ├── package.xml
+│   ├── src
+│   │   ├── drive_bot.cpp
+│   │   └── process_image.cpp
+│   └── srv
+│       └── DriveToTarget.srv
+├── images
+│   ├── 1_initial_position.png
+│   ├── 2_map_explored.png
+│   ├── 3_local_match.png
+│   ├── 4_loop_rejection.png
+│   ├── 5_post_box_match.png
+│   └── 6_quadrotor_match.png
+├── model
+│   └── new-building
+│       ├── model.config
+│       └── model.sdf
+├── model_decorated
+│   ├── model.config
+│   └── model.sdf
+├── my_ball
+│   ├── model.config
+│   └── model.sdf
+├── my_robot
+│   ├── CMakeLists.txt
+│   ├── launch
+│   │   ├── localization.launch
+│   │   ├── mapping.launch
+│   │   ├── robot_description.launch
+│   │   ├── teleop.launch
+│   │   ├── wooden_house_world.launch
+│   │   └── world.launch
+│   ├── map_my_world_config.rviz
+│   ├── mesh_files
+│   │   └── hokuyo.dae
+│   ├── package.xml
+│   ├── urdf
+│   │   ├── materials.xacro
+│   │   ├── my_robot.gazebo
+│   │   └── my_robot.xacro
+│   └── worlds
+│       ├── myworld
+│       ├── myworld_without_ball.world
+│       ├── wooden_house.world
+│       ├── wooden_house_with_ball.world
+│       └── wooden_house_world_decorated.world
+├── startup_notes.txt
+└── udacity_robot
+    ├── CMakeLists.txt
+    ├── config
+    │   ├── base_local_planner_params.yaml
+    │   ├── costmap_common_params.yaml
+    │   ├── global_costmap_params.yaml
+    │   ├── local_costmap_params.yaml
+    │   └── sensor_viewing_rviz_config.rviz
+    ├── launch
+    │   └── amcl.launch
+    ├── maps
+    │   ├── original_map.pbm
+    │   ├── wooden_house_map.pbm
+    │   └── wooden_house_map.yaml
+    └── package.xml
+
+18 directories, 50 files
 ```
