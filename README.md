@@ -81,8 +81,15 @@ roslaunch my_robot localization.launch
 ```
 
 ### Database Analysis
-rtabmap-databaseViewer ~/.ros/rtabmap.db
+
 Here is the rtabmap database file: https://drive.google.com/file/d/12Ni1OEAid9l5qRj1225bOv0_ohx1f6sS/view?usp=sharing
+
+Copy it to a location in the workspace and view it like so:
+
+```
+rtabmap-databaseViewer home/workspace/rtabmap.db
+```
+
 
 # Images of the project:
 Here is the robot in the initial position:
@@ -104,18 +111,9 @@ The project is in the my_robot folder and the database is in this link: https://
 Here is the project structure from the top level folder:
 ```
 (base) will-MBP ~/Desktop/UdacityRobotics/UdacityRobotics-map-my-world$:tree
+(base) will-MBP ~/Desktop/UdacityRobotics/UdacityRobotics-map-my-world$:tree
 .
 ├── README.md
-├── ball_chaser
-│   ├── CMakeLists.txt
-│   ├── launch
-│   │   └── ball_chaser.launch
-│   ├── package.xml
-│   ├── src
-│   │   ├── drive_bot.cpp
-│   │   └── process_image.cpp
-│   └── srv
-│       └── DriveToTarget.srv
 ├── images
 │   ├── 1_initial_position.png
 │   ├── 2_map_explored.png
@@ -123,14 +121,7 @@ Here is the project structure from the top level folder:
 │   ├── 4_loop_rejection.png
 │   ├── 5_post_box_match.png
 │   └── 6_quadrotor_match.png
-├── model
-│   └── new-building
-│       ├── model.config
-│       └── model.sdf
 ├── model_decorated
-│   ├── model.config
-│   └── model.sdf
-├── my_ball
 │   ├── model.config
 │   └── model.sdf
 ├── my_robot
@@ -156,22 +147,5 @@ Here is the project structure from the top level folder:
 │       ├── wooden_house.world
 │       ├── wooden_house_with_ball.world
 │       └── wooden_house_world_decorated.world
-├── startup_notes.txt
-└── udacity_robot
-    ├── CMakeLists.txt
-    ├── config
-    │   ├── base_local_planner_params.yaml
-    │   ├── costmap_common_params.yaml
-    │   ├── global_costmap_params.yaml
-    │   ├── local_costmap_params.yaml
-    │   └── sensor_viewing_rviz_config.rviz
-    ├── launch
-    │   └── amcl.launch
-    ├── maps
-    │   ├── original_map.pbm
-    │   ├── wooden_house_map.pbm
-    │   └── wooden_house_map.yaml
-    └── package.xml
-
-18 directories, 50 files
+└── startup_notes.txt
 ```
